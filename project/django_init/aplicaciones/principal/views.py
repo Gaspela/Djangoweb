@@ -4,4 +4,9 @@ from .models import User
 # Create your views here.
 
 def init(request):
-    return render(request,'index.html')
+    personas = User.objects.all()
+    contexto = {
+        'user': personas
+    }
+    return render(request,'index.html', contexto)
+

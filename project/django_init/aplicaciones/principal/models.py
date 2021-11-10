@@ -7,3 +7,6 @@ class User(models.Model):
     name = models.CharField(max_length=100)
     last = models.CharField(max_length=120)
     email = models.EmailField(max_length=200)
+    
+    def __str__(self):
+        return self.name
