@@ -7,13 +7,13 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title></title>
+    <title>{% block titulo %}List Contact{% endblock titulo %}</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="" />
-    <title>List contact</title>
   </head>
   <body>
+    {% block cuerpo %}
     <!--[if lt IE 7]>
       <p class="browsehappy">
         You are using an <strong>outdated</strong> browser. Please
@@ -27,18 +27,21 @@
           <th>Name</th>
           <th>Last</th>
           <th>Email</th>
+          <th>CC</th>
         </tr>
       </thead>
       <tbody>
-        {% for i in user%}
+        {% for i in user %}
         <tr>
           <td>{{ i.name }}</td>
-          <td>{{ i.last }}</td>
+          <td>{{ i.last_name }}</td>
           <td>{{ i.email }}</td>
+          <td>{{ i.cc }}</td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
     <script src="" async defer></script>
+    {% endblock cuerpo %}
   </body>
 </html>
