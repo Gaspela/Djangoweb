@@ -5,7 +5,6 @@ from .forms import UserForm
 # Create your views here.
 
 
-
 def init(request):
     personas = User.objects.all()
     contexto = {
@@ -29,3 +28,28 @@ def createUser(request):
             form.save()
             return redirect('index')
     return render(request, 'create_user.html', contexto)
+
+
+def editUser(request, id):
+    personas = User.objects.get(id=id)
+    if request.method == "GET":
+        form = UserForm(instance=personas)
+        contexto = {
+            'form': form
+        }
+    else:
+        form = UserForm(request.POST, instance=personas)
+        contexto = {
+            'form': form
+        }
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    return render(request, 'create_user.html', contexto)
+
+def delteUser(request, id):
+    personas = User.objects.get(id=id)
+    personas.delete()
+    return redirect('index')
+    
+    
