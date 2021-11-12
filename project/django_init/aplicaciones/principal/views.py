@@ -3,11 +3,11 @@ from .models import User
 from .forms import UserForm
 # Representa la vista del template, Logica del proyecto
 # Create your views here.
-personas = User.objects.all()
+
 
 
 def init(request):
-
+    personas = User.objects.all()
     contexto = {
         'user': personas
     }
