@@ -20,7 +20,7 @@
         <a href="#">upgrade your browser</a> to improve your experience.
       </p>
     <![endif]-->
-    <h1>Prueba template</h1>
+    <h1>Simple CRUD Django</h1>
     <table border="2">
       <thead>
         <tr>
@@ -31,6 +31,7 @@
           <th>Option</th>
         </tr>
       </thead>
+      
       <tbody>
         {% for i in object_list %}
         <tr>
@@ -38,12 +39,16 @@
           <td>{{ i.last_name }}</td>
           <td>{{ i.email }}</td>
           <td>{{ i.cc }}</td>
-          <td><a href="{% url 'edituser' i.id %}">Edit</a> - <a href="{% url 'deleteuser' i.id %}">Delete</a></td>
-
+          <td>
+            <a href="{% url 'edituser' i.id %}">Edit</a> -
+            <a href="{% url 'deleteuser' i.id %}">Delete</a>
+          </td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
+    <br>
+    <a href="{% url 'createuser'%}">Create User</a>
     <script src="" async defer></script>
     {% endblock cuerpo %}
   </body>
