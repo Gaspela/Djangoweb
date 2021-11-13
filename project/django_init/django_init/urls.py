@@ -16,11 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from aplicaciones.principal.views import init, createUser, editUser, delteUser
+from aplicaciones.principal.classviews import UserList,CreateUser,UpdateUser,DeleteUser
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', init, name='index'),
-    path('createuser/', createUser, name='createuser'),
-    path('edituser/<int:id>/', editUser, name='edituser'),
-    path('deleteuser/<int:id>/', delteUser, name='deleteuser')
+    path('', UserList.as_view(), name='index'),
+    path('createuser/', CreateUser.as_view(), name='createuser'),
+    path('edituser/<int:pk>/', UpdateUser.as_view(), name='edituser'),
+    path('deleteuser/<int:pk>/', DeleteUser.as_view(), name='deleteuser')
 ]
